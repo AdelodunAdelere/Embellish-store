@@ -19,7 +19,7 @@ export default function HeroBackground() {
   useEffect(() => {
     const t = setInterval(
       () => setCurrent((i) => (i + 1) % IMAGES.length),
-      120_000
+      5_000
     );
     return () => clearInterval(t);
   }, []);
@@ -33,7 +33,7 @@ export default function HeroBackground() {
           src={src}
           alt=""
           aria-hidden
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[5ms] ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[10ms] ${
             i === current ? "opacity-25" : "opacity-0"
           }`}
         />
