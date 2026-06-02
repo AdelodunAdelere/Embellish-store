@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = process.env.RESEND_FROM_EMAIL ?? "EMBELLISH <orders@embellish.ng>";
 
 function orderConfirmedHtml(orderId: string, total: number) {
@@ -69,6 +68,7 @@ function shippedHtml(orderId: string) {
 
 export async function POST(request: NextRequest) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { type, orderId, email, total } = await request.json();
 
     if (!email) return NextResponse.json({ error: "No email" }, { status: 400 });
