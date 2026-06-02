@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { Suspense, useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { SlidersHorizontal, X, ChevronDown } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
@@ -8,7 +8,7 @@ import ProductCard from "@/components/shop/ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
 import { products, categories } from "@/lib/data";
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const urlCategory = searchParams.get("category") ?? "all";
   const urlSearch = searchParams.get("search") ?? "";
@@ -158,5 +158,13 @@ export default function ShopPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense>
+      <ShopContent />
+    </Suspense>
   );
 }

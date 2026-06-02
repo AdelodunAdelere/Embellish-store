@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { User, Heart, Package, LogOut, MapPin } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -21,7 +21,7 @@ const STATUS_COLOURS: Record<string, string> = {
   cancelled: "bg-red-100 text-red-800",
 };
 
-export default function AccountPage() {
+function AccountContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const defaultTab = searchParams.get("tab") ?? "profile";
@@ -243,5 +243,13 @@ export default function AccountPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function AccountPage() {
+  return (
+    <Suspense>
+      <AccountContent />
+    </Suspense>
   );
 }
