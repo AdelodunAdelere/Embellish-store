@@ -43,7 +43,7 @@ export const products: Product[] = [
     category: "handbag",
     description:
       "A dreamy satin handbag in our signature blush. Top handle with optional crossbody strap.",
-    images: ["https://kegcvnzprvscmhmorprh.supabase.co/storage/v1/object/public/products/sienna-structured-tote/1.JPG"],
+    images: ["https://kegcvnzprvscmhmorprh.supabase.co/storage/v1/object/public/products/Handbags/1.JPG"],
     colors: ["#EDBFC6", "#AF8D86"],
     rating: 4.5,
     reviews: 35,
